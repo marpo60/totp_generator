@@ -15,8 +15,9 @@ defmodule TotpGeneratorWeb.TotpGeneratorLive do
   end
 
   defp services_with_code() do
+    refresh = 30 - Integer.mod(Map.get(DateTime.utc_now, :second), 30)
     Enum.map(services(), fn([name, secret]) ->
-      [name, calculate_totp(secret)]
+      [name, calculate_totp(secret), refresh]
     end)
   end
 
