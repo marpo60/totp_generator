@@ -1,1 +1,3 @@
-<%= @code %>
+<%= for [name, code] <- @services do %>
+  <p> <%= name %> - <%= code %> </p>
+<% end %>
