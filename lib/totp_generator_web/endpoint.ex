@@ -1,6 +1,7 @@
 defmodule TotpGeneratorWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :totp_generator
 
+  socket "/live", Phoenix.LiveView.Socket
   socket "/socket", TotpGeneratorWeb.UserSocket,
     websocket: true,
     longpoll: false

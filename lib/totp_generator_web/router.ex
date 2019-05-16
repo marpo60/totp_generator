@@ -5,6 +5,7 @@ defmodule TotpGeneratorWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -16,11 +17,6 @@ defmodule TotpGeneratorWeb.Router do
   scope "/", TotpGeneratorWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", TotpGeneratorLive
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", TotpGeneratorWeb do
-  #   pipe_through :api
-  # end
 end
